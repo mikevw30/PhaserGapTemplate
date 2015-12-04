@@ -3,8 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="format-detection" content="telephone=no" />
-<meta name="viewport"
- content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <meta name="msapplication-tap-highlight" content="no" />
@@ -12,17 +11,23 @@
 </head>
 <body>
  <div ng-app="HelloApp" ng-controller="HelloCtrl">
-    <form role="form" method="post" action="#">
-        <div class="form-group form-group-lg">
-            <label class="col-xs-2 control-label">Name</label>
-            <div class="col-xs-12">
-                <input type="text" class="form-control input-lg" name="name" ng-model="name" />
-            </div>
-        </div>
-        <div class="col-xs-10">
-            <h3>Hello {{name}}!</h3>
-        </div>
-    </form>
+ 
+ 	<div id="container" class="jumbotron">
+ 		<h1>Title</h1>
+ 	</div>
+ 	<div id="container" class="col-centered">
+	    <form role="form" method="post" action="#">
+	        <div class="form-group form-group-lg">
+	            <label class="col-xs-2 control-label">Name</label>
+	            <div class="col-xs-12">
+	                <input type="text" class="form-control input-lg" name="name" ng-model="name" />
+	            </div>
+	        </div>
+	        <div class="col-xs-10">
+	            <h3>Hello {{name}}!</h3>
+	        </div>
+	    </form>
+ 	</div>
  </div>
  <script type="text/javascript" src="cordova.js"></script>
  <script type="text/javascript" src="js/index.js"></script>
