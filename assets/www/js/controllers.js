@@ -1,7 +1,6 @@
 var myApp = angular.module('myApp', [ 'ngRoute' ]);
 
 myApp.config(function($locationProvider, $routeProvider) {
-	$locationProvider.hashPrefix("!");
 	$locationProvider.html5Mode(false);
 	$routeProvider.when('/view1', {
 		controller : 'mainController',
