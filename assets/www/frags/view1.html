@@ -1,17 +1,12 @@
-   <div class="container">
-   
-<!--       <div class="col-lg-10"> -->
-<!--          Name: <input type="text" data-ng-model="name"/> -->
-<!--       </div> -->
-<!--       <div class="col-lg-10"> -->
-<!--          <ul> -->
-<!--             <li data-ng-repeat="cust in customers | filter:name">{{ cust.name }} - {{ cust.city}}</li> -->
-<!--          </ul> -->
-<!--          <ul> -->
-<!--             <li data-ng-repeat="cust in customers | filter:name | orderBy:'city'">{{ cust.name }} - {{ cust.city}}</li> -->
-<!--          </ul> -->
-<!--          hello 1 -->
-<!--          <br/> -->
-         <a href="#/view2">View 2</a>
-<!--       </div> -->
+<div>
+   Name: <input type="text" data-ng-model="name" />
+</div>
+<div>
+   <div>
+      <div data-ng-repeat="cust in customers | filter:name">{{ cust.name }} - {{ cust.city}}</div>
    </div>
+   <div>
+      <div data-ng-repeat="cust in customers | filter:name | orderBy:'city'">{{ cust.name }} - {{ cust.city}}</div>
+   </div>
+   <a href="#/view2">View 2</a>
+</div>

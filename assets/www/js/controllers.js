@@ -2,13 +2,20 @@ var myApp = angular.module('myApp', [ 'ngRoute' ]);
 
 myApp.config(function($locationProvider, $routeProvider) {
 	$locationProvider.html5Mode(false);
-	$routeProvider.when('/view1', {
+	$routeProvider
+	  .when('/view1', {
 		controller : 'mainController',
 		templateUrl : 'frags/view1.html'
-	}).when('/view2', {
+	  })
+	  .when('/view2', {
 		controller : 'mainController',
 		templateUrl : 'frags/view2.html'
-	}).otherwise({
+	  })
+	  .when('/view3', {
+		  controller : 'mainController',
+		  templateUrl : 'frags/view3.html'
+	  })
+	  .otherwise({
 		redirectTo : '/view1'
 	});
 });
