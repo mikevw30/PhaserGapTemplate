@@ -1,0 +1,13 @@
+<h1>Welcome {{vm.user.firstName}}</h1>
+<p>Songs Votes on: {{vm.user.songVotes}}</p>
+<a href="#/player" class="btn btn-primary">Play Songs</a>
+<p>&nbsp;</p>
+<a href="#/playlist" class="btn btn-primary">Build Play List</a>
+<p>&nbsp;</p>
+<p><a href="#/login" class="btn btn-primary">Logout</a></p>
+
+<ul>
+   <li ng-repeat="user in vm.allUsers">
+     {{user.username}} ({{user.firstName}} {{user.lastName}}) - <a href="#" ng-click="vm.deleteUser(user.id)">Delete</a>
+   </li>
+</ul>

@@ -1,22 +1,37 @@
 <!DOCTYPE html>
-<html data-ng-app="myApp">
+<html ng-app="app">
 <head>
-   <meta charset="utf-8" />
-   <meta name="format-detection" content="telephone=no" />
-   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
-   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="css/index.css">
-   <meta name="msapplication-tap-highlight" content="no" />
+    <meta charset="utf-8" />
+    <title>AngularJS User Registration and Login Example</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 <body>
+
    <div class="container-fluid .col-xs-6 .col-md-4 text-center align-middle">
-      <div class="ng-view"></div>
-   </div>
-   
-   <script type="text/javascript" src="js/index.js"></script>
-   <script type="text/javascript" src="js/angular.min.js"></script>
-   <script type="text/javascript" src="js/angular-route.min.js"></script>
-   <script type="text/javascript" src="js/controllers.js"></script>
-   <script type="text/javascript">app.initialize();</script>
+       <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+       <div ng-view></div>
+    </div>
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-cookies.min.js"></script>
+
+    <script src="js/index.js"></script>
+    <script src="app-services/authentication.service.js"></script>
+    <script src="app-services/flash.service.js"></script>
+
+    <!-- Real user service that uses an api -->
+    <!-- <script src="app-services/user.service.js"></script> -->
+
+    <!-- Fake user service for demo that uses local storage -->
+    <script src="app-services/user.service.local-storage.js"></script>
+
+    <script src="home/home.controller.js"></script>
+    <script src="login/login.controller.js"></script>
+    <script src="register/register.controller.js"></script>
+    <script src="player/player.controller.js"></script>
+    <script src="playlist/playlist.controller.js"></script>
+    <script type="text/javascript">pgApp.initialize();</script>
 </body>
 </html>
