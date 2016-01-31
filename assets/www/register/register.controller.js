@@ -18,6 +18,7 @@
             vm.user.songVotes = 0;
             vm.user.upVotes = 0;
             vm.user.downVotes = 0;
+            vm.user.currentSong = 1;
             vm.user.playList = [
                {
                   "name": "pop", 

@@ -1,4 +1,17 @@
 <div class="container">
+   </br>
+   Name:{{ vm.songs[0].name }}
+   </br>
+   artist: {{ vm.songs[0].artist }}
+   </br>
+   album: {{ vm.songs[0].album }}
+   </br>
+   year: {{ vm.songs[0].year }}
+   </br>
+   upvotes: {{ vm.songs[0].upvotes }}
+   </br>
+   downvotes: {{ vm.songs[0].downvotes }}
+   </br>
    <button class="btn" ng-click="upVote()">Up Vote</button>
    <button class="btn" ng-click="downVote()">Down Vote</button>
 </div>

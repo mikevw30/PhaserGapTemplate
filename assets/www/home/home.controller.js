@@ -13,6 +13,7 @@
         vm.allUsers = [];
         vm.deleteUser = deleteUser;
 
+        
         initController();
 
         function initController() {
@@ -27,6 +28,13 @@
                 });
         }
 
+        function loadAllUsers() {
+            UserService.GetAll()
+                .then(function (users) {
+                    vm.allUsers = users;
+                });
+        }
+        
         function loadAllUsers() {
             UserService.GetAll()
                 .then(function (users) {
