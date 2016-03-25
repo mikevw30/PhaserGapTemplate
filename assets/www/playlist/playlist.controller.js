@@ -46,9 +46,10 @@
 	    }
 	    
 	   function updatePlayList(){
-		   UserService.Update(vm.user).then(function (user) {
-	    		loadCurrentUser();
-	    	});
+		   UserService.Update(vm.user)
+		   		.then(function (user) {
+		   			loadCurrentUser();
+		   		});
 	   }; 
 	};
 })();

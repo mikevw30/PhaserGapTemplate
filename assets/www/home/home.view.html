@@ -1,15 +1,7 @@
-<h1>Welcome {{vm.user.firstName}}</h1>
-<p>Total Votes: {{vm.user.songVotes}}</p>
-<p>Up Votes: {{vm.user.upVotes}}</p>
-<p>Down Votes: {{vm.user.downVotes}}</p>
-<a href="#/player" class="btn btn-primary">Play Songs</a>
-<p>&nbsp;</p>
-<a href="#/playlist" class="btn btn-primary">Build Play List</a>
-<p>&nbsp;</p>
-<p><a href="#/login" class="btn btn-primary">Logout</a></p>
-
-<ul>
-   <li ng-repeat="user in vm.allUsers">
-     {{user.username}} ({{user.firstName}} {{user.lastName}}) - <a href="#" ng-click="vm.deleteUser(user.id)">Delete</a>
-   </li>
-</ul>
+<h1>My CRUDdy App</h1>
+<div class="text-center vert-offset-top-18">
+   <a href="#/player" class="btn btn-primary">Play Songs</a>
+   </br>
+   </br>
+   <a href="#/addsong" class="btn btn-primary">Add Song</a>
+</div>
