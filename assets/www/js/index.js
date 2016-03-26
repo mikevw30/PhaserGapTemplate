@@ -9,6 +9,9 @@ var pgApp = {
 	},
 	onDeviceReady : function() {
 		$.support.cors=true;
+        $.support.cors = true;
+        $.mobile.allowCrossDomainPages = true;
+        $.mobile.pushStateEnabled = false;
 		pgApp.receivedEvent('deviceready');
 	},
 	receivedEvent : function(id) {
