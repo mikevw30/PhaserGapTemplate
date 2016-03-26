@@ -39,10 +39,12 @@
         }
         
         function getAllSongs() {
+        	window.alert('trying to get song list');
         	var promise = $http.get(getAllSongsURI).then(function (response){
         			console.log(response);
         			return response.data;
         		});
+        	window.alert('have the song list');
         	return promise;
         }
         
