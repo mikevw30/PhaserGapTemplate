@@ -64,16 +64,14 @@
     <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
   </feature>
   <feature name="http://api.phonegap.com/1.0/network"/>
-  <access origin="*" />
   <plugin name="cordova-plugin-whitelist" version="1" />
+  <allow-navigation href="*" />
   <allow-intent href="http://*/*" />
   <allow-intent href="https://*/*" />
   <allow-intent href="tel:*" />
   <allow-intent href="sms:*" />
   <allow-intent href="mailto:*" />
   <allow-intent href="geo:*" />
-  <allow-navigation href="http://*/*" />
-  <allow-navigation href="https://*/*" />
   <platform name="android">
     <allow-intent href="market:*" />
   </platform>
