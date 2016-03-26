@@ -8,10 +8,6 @@ var pgApp = {
 		document.addEventListener('deviceready', this.onDeviceReady, false);
 	},
 	onDeviceReady : function() {
-		$.support.cors=true;
-        $.support.cors = true;
-        $.mobile.allowCrossDomainPages = true;
-        $.mobile.pushStateEnabled = false;
 		pgApp.receivedEvent('deviceready');
 	},
 	receivedEvent : function(id) {
@@ -21,6 +17,10 @@ var pgApp = {
 
 		listeningElement.setAttribute('style', 'display:none;');
 		receivedElement.setAttribute('style', 'display:block;');
+
+		$.support.cors = true;
+		$.mobile.allowCrossDomainPages = true;
+		$.mobile.pushStateEnabled = false;
 
 		console.log('Received Event: ' + id);
 	}
