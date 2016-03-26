@@ -8,6 +8,7 @@ var pgApp = {
 		document.addEventListener('deviceready', this.onDeviceReady, false);
 	},
 	onDeviceReady : function() {
+		$.support.cors=true;
 		pgApp.receivedEvent('deviceready');
 	},
 	receivedEvent : function(id) {
