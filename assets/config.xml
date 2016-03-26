@@ -69,7 +69,9 @@
   <access origin="*" />
   
   <platform name="android">
-    <allow-intent href="market:*" />
+  	<allow-navigation href="*" />
+  	<allow-intent href="*" />
+  	<access origin="*" />
   </platform>
   <platform name="ios">
     <allow-intent href="itms:*" />
