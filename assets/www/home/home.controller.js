@@ -21,6 +21,7 @@
                 navigator.app.exitApp();
 	        }else if(navigator.device){
 	        	navigator.device.exitApp();
+	        	window.close();
 	        }
 	    }
     }
