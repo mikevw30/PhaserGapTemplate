@@ -10,6 +10,13 @@
    <div class="container-fluid">
       <div class="row-fluid">
          <div class="col-md-8 col-md-offset-2 vert-offset-top-2">
+            <div ng-if="false">
+                <p>
+                    This will show until the application is bootstrapped.
+                    Then, the ngIf directive will immediately rip it out of
+                    the page.
+                </p>
+            </div>
             <div ng-view></div>
          </div>
       </div>
@@ -22,6 +29,7 @@
    <script src="js/angular-cookies.min.js"></script>
 
    <script src="js/index.js"></script>
+   <script src="js/cordovaInit.js"></script>
 
    <script src="app-services/song.service.js"></script>
    <script src="home/home.controller.js"></script>
@@ -29,6 +37,5 @@
    <script src="playlist/playlist.controller.js"></script>
    <script src="songupdate/songupdate.controller.js"></script>
    <script src="addsong/addsong.controller.js"></script>
-<!--    <script type="text/javascript">pgApp.initialize();</script> -->
 </body>
 </html>
