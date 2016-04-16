@@ -17,14 +17,11 @@
         }
         
         function exit(){
-        	 document.addEventListener("backbutton", function () { 
-                 if (confirm('Afsluiten?')){
-                     setTimeout( function() { navigator.app.exitApp(); });
-                 }
-                 else {
-                     '';
-                 }
-             }, true);
+        	if(navigator.app){
+                navigator.app.exitApp();
+	        }else if(navigator.device){
+	        	navigator.device.exitApp();
+	        }
 	    }
     }
 })();
