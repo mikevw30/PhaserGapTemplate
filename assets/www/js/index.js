@@ -25,11 +25,39 @@
 //		console.log('Received Event: ' + id);
 //	}
 //};
+
+var CordovaInit = function() {
+
+	var onDeviceReady = function() {
+		receivedEvent('deviceready');
+	};
+
+	var receivedEvent = function(event) {
+		console.log('Start event received, bootstrapping application setup.');
+		angular.bootstrap($('body'), ['app']);
+	};
+
+	this.bindEvents = function() {
+		document.addEventListener('deviceready', onDeviceReady, false);
+	};
+
+	//If cordova is present, wait for it to initialize, otherwise just try to
+	//bootstrap the application.
+	if (window.cordova !== undefined) {
+		console.log('Cordova found, wating for device.');
+		this.bindEvents();
+	} else {
+		console.log('Cordova not found, booting application');
+		receivedEvent('manual');
+	}
+};
+
+
 angular.module('app', [ 'ngRoute']).config(config);
 
-angular.element(document).ready(function() {
-    angular.bootstrap(document, ['app']);
-  });
+//angular.element(document).ready(function() {
+//    angular.bootstrap(document, ['app']);
+//  });
 
 config.$inject = [ '$routeProvider', '$locationProvider' ];
 function config($routeProvider, $locationProvider) {
@@ -67,3 +95,8 @@ function config($routeProvider, $locationProvider) {
 		redirectTo : '/'
 	});
 }
+
+$(function() {
+	console.log('Bootstrapping!');
+	new CordovaInit();
+});
