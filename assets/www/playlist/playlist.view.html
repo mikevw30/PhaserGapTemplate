@@ -1,5 +1,5 @@
 <div class="container">
-   <form ng-submit="vm.updatePlayList()" role="form" ng-model="vm.user.playList">
+   <form ng-submit="vm.updatePlayList()" role="form" ng-model="vm.user.playlist">
       <h1>Tap/Click To Select</h1>
       <ul class="list-group">
          <li ng-repeat="genre in vm.user.playlist" ng-class="vm.getClass($index)" ng-click="vm.toggleActive($index)"  value="{{genre.genre}}">

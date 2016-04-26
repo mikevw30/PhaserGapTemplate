@@ -3,8 +3,8 @@
 	
 	angular.module('app').controller('PlaylistController', PlaylistController);
 	
-	PlaylistController.$inject = ['UserService', '$rootScope'];
-	function PlaylistController(UserService, $rootScope) {
+	PlaylistController.$inject = ['UserService', '$location'];
+	function PlaylistController(UserService, $location) {
 		var vm = this;
 		vm.user = null;
 	    
@@ -20,7 +20,6 @@
 		
 	    function loadUser() {
 	        vm.user = UserService.getUser();
-	        console.log('playlist... '+vm.user.playlist[0].active);
 	    }
 	    
 	    function toggleActive(index){
@@ -44,10 +43,8 @@
 	    }
 	    
 	   function updatePlayList(){
-		   UserService.Update(vm.user)
-		   		.then(function (user) {
-		   			loadCurrentUser();
-		   		});
+		   UserService.updateUser(vm.user);
+		   $location.path('/');
 	   }; 
 	};
 })();
