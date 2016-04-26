@@ -15,29 +15,27 @@
 		initController();
 	
 	    function initController() {
-	        loadCurrentUser();
+	        loadUser();
 	    }
 		
-	    function loadCurrentUser() {
-	        UserService.GetByUsername($rootScope.globals.currentUser.username)
-	            .then(function (user) {
-	                vm.user = user;
-	            });
+	    function loadUser() {
+	        vm.user = UserService.getUser();
+	        console.log('playlist... '+vm.user.playlist[0].active);
 	    }
 	    
 	    function toggleActive(index){
-	    	if (vm.user.playList[index].active == 'true'){
-	    		vm.user.playList[index].active = 'false';
+	    	if (vm.user.playlist[index].active == 'true'){
+	    		vm.user.playlist[index].active = 'false';
 	    		$(this.target).removeClass('active');
 	    	}
 	    	else {
-	    		vm.user.playList[index].active = 'true';
+	    		vm.user.playlist[index].active = 'true';
 	    		$(this.target).addClass('active');
 	    	}
 	    }
 	    
 	    function getClass(index){
-	    	if (vm.user.playList[index].active == 'true'){
+	    	if (vm.user.playlist[index].active == 'true'){
 	    		return 'list-group-item active';
 	    	}
 	    	else{

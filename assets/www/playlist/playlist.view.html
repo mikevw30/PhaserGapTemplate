@@ -1,13 +1,13 @@
 <div class="container">
    <form ng-submit="vm.updatePlayList()" role="form" ng-model="vm.user.playList">
-      <h1>Tap/Click to select</h1>
+      <h1>Tap/Click To Select</h1>
       <ul class="list-group">
-         <li ng-repeat="genre in vm.user.playList" ng-class="vm.getClass($index)" ng-click="vm.toggleActive($index)"  value="{{genre.name}}">
-            {{genre.title}}
+         <li ng-repeat="genre in vm.user.playlist" ng-class="vm.getClass($index)" ng-click="vm.toggleActive($index)"  value="{{genre.genre}}">
+            {{genre.genre}}
          </li>
       </ul>
       <button type="submit" class="btn btn-default">Save Playlist</button>
    </form>
    </br>
    <a href="#/" class="btn btn-primary">Menu</a>
-</div>
+</div> 
