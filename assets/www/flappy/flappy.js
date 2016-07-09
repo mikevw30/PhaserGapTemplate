@@ -108,8 +108,10 @@ var mainState = {
 };
 
 
-var height = window.innerHeight * window.devicePixelRatio;
-var width = window.innerWidth * window.devicePixelRatio;
+var height = window.innerHeight;
+//var height = window.innerHeight * window.devicePixelRatio;
+var width = window.innerWidth;
+//var width = window.innerWidth * window.devicePixelRatio;
 
 // Initialize Phaser, and create a 400px by 490px game
 //var game = new Phaser.Game(400, 490);
