@@ -4,7 +4,7 @@
 	angular.module('app').controller('FlappyController', FlappyController);
 	
 	
-	function PlayerController() {
+	function FlappyController() {
 		var vm = this;
 	}
 })();
