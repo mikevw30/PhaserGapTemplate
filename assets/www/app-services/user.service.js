@@ -16,11 +16,8 @@
              
         function getUser(){
         	var user = JSON.parse(localStorage.getItem('user'));
-        	
-        	if (typeof user !== 'undefined' && user !== null){
-        		console.log('hello');
-        	}
-        	else{
+
+        	if (typeof user === 'undefined' && user === null){
 	        	user = {
 	        			'playlist' :[
 	        			             {'genre': 'rap',
@@ -37,13 +34,13 @@
 	        	// Put the object into storage
 	        	localStorage.setItem('user', JSON.stringify(user));
         	}
+        	
         	console.log('[UserService] :- user: '+JSON.stringify(user));
-
     		return user;
         }
         function updateUser(user){
-        	console.log('[UserService.updateUser(user)] :- user: '+JSON.stringify(user));
         	localStorage.setItem('user', JSON.stringify(user));
+        	console.log('[UserService.updateUser(user)] :- user: '+JSON.stringify(user));
         }
     }
 })();

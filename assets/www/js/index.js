@@ -37,6 +37,12 @@ function config($routeProvider, $locationProvider) {
 		templateUrl : 'addsong/addsong.view.html',
 		controllerAs : 'vm'
 	})
+	
+	.when('/flappy', {
+		controller : 'FlappyController',
+		templateUrl : 'flappy/flappy.view.html',
+		controllerAs : 'vm'
+	})
 
 	.otherwise({
 		redirectTo : '/'
