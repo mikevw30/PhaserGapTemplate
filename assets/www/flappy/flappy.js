@@ -173,7 +173,7 @@ var mainState = {
         // Randomly pick a number between 1 and 5
         // This will be the hole position
     	
-    	var numOfHoles = 7;
+    	var numOfHoles = 14;
     	
 //        var star = Math.floor(Math.random() * numOfHoles) + 1;
 //        this.addStar(width, star * 60 + 10);  
@@ -202,7 +202,7 @@ var mainState = {
 };
 
 
-
+var highScore = 0;
 
 var height = window.innerHeight;
 //var height = window.innerHeight * window.devicePixelRatio;
