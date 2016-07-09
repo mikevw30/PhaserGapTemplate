@@ -52,7 +52,7 @@ var mainState = {
                      '.66....66....66.'
                    ];
                    
-        game.create.texture('alien', alien, 4, 4);
+        game.create.texture('alien', alien, 3, 3);
         
         
         var star = [
@@ -173,15 +173,31 @@ var mainState = {
         // Randomly pick a number between 1 and 5
         // This will be the hole position
     	
-    	var numOfHoles = (7 * height) / 490;
+    	var numOfHoles = 7;
     	
-        var star = Math.floor(Math.random() * numOfHoles) + 1;
-        this.addStar(width, star * 60 + 10);  
+//        var star = Math.floor(Math.random() * numOfHoles) + 1;
+//        this.addStar(width, star * 60 + 10);  
+//        
+//        for(var i=0; i<3 ;i++){
+//        	var pipe1 = Math.floor(Math.random() * numOfHoles) + 1;
+//        	this.addOnePipe(width, pipe1 * 60 + 10);   
+//        }
         
-        for(var i=0; i<5 ;i++){
-        	var pipe1 = Math.floor(Math.random() * numOfHoles) + 1;
-        	this.addOnePipe(width, pipe1 * 60 + 10);   
+        var arr = [];
+        while(arr.length < 4){
+          var randomnumber=Math.ceil(Math.random()*numOfHoles);
+          var found=false;
+          for(var i=0;i<arr.length;i++){
+        	if(arr[i]==randomnumber){found=true;break;}
+          }
+          if(!found)arr[arr.length]=randomnumber;
         }
+        this.addStar(width, arr[0] * 60 + 10);  
+        this.addOnePipe(width, arr[1] * 60 + 10);   
+        this.addOnePipe(width, arr[2] * 60 + 10);   
+        this.addOnePipe(width, arr[3] * 60 + 10);   
+        
+        
     }
 };
 
