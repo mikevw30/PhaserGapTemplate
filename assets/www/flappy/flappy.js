@@ -89,18 +89,12 @@ var mainState = {
 
         // Call the 'jump' function when the spacekey is hit
         game.input.onDown.add(this.jump, this);
-//        var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-//        spaceKey.onDown.add(this.jump, this); 
         
         this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);
         
         this.score = 0;
         this.labelScore = game.add.text(20, 20, "0",
                             { font: "30px Arial", fill: "#ffffff" });  
-        
-//        var backbutton = game.input.keyboard.addKey(Phaser.Phone.BACK_BUTTON);
-//        
-//        backbutton.onDown.add(game.destroy(), this);
         
     },
 
@@ -194,10 +188,10 @@ var mainState = {
 
 
 
-//var height = window.innerHeight;
-var height = window.innerHeight * window.devicePixelRatio;
-//var width = window.innerWidth;
-var width = window.innerWidth * window.devicePixelRatio;
+var height = window.innerHeight;
+//var height = window.innerHeight * window.devicePixelRatio;
+var width = window.innerWidth;
+//var width = window.innerWidth * window.devicePixelRatio;
 
 // Initialize Phaser, and create a 400px by 490px game
 //var game = new Phaser.Game(400, 490);
