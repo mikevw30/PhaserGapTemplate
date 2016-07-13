@@ -70,6 +70,7 @@ function create() {
     console.log(layer2.index);
     console.log(layer3.index);
 
+    game.input.addPointer();
 }
 
 function changeLayer(key) {
@@ -117,7 +118,7 @@ function updateMarker() {
     marker.x = currentLayer.getTileX(game.input.activePointer.worldX) * 32;
     marker.y = currentLayer.getTileY(game.input.activePointer.worldY) * 32;
 
-    if (game.input.mousePointer.isDown)
+    if (game.input.mousePointer.isDown || game.input.pointer1.onDown)
     {
         map.putTile(currentTile, currentLayer.getTileX(marker.x), currentLayer.getTileY(marker.y), currentLayer);
         // map.fill(currentTile, currentLayer.getTileX(marker.x), currentLayer.getTileY(marker.y), 4, 4, currentLayer);
