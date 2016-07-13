@@ -9,6 +9,7 @@ var mainState = {
         // Change the background color of the game to blue
         game.stage.backgroundColor = '#71c5cf';
 
+        
         // Set the physics system
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -96,6 +97,7 @@ var mainState = {
         this.labelScore = game.add.text(20, 20, "0",
                             { font: "30px Arial", fill: "#ffffff" });  
         
+        goFullScreen();
     },
 
     update: function() {  
@@ -170,9 +172,6 @@ var mainState = {
     },
     
     addRowOfPipes: function() {
-        // Randomly pick a number between 1 and 5
-        // This will be the hole position
-    	
     	var numOfHoles = 14;
     	
 //        var star = Math.floor(Math.random() * numOfHoles) + 1;
@@ -201,17 +200,31 @@ var mainState = {
     }
 };
 
+// function to scale up the game to full screen
+function goFullScreen(){
+	game.scale.pageAlignHorizontally = true;
+//	game.scale.pageAlignVertically = true;
+	game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+//	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+//	game.scale.minHeight = 480;
+//	game.scale.minWidth = 320;
+//	game.scale.maxHeight = 1152;
+//	game.scale.maxWidth = 768;
+//	game.scale.refresh();
+}
 
 var highScore = 0;
 
+//var height = 700;
 var height = window.innerHeight;
 //var height = window.innerHeight * window.devicePixelRatio;
+//var width = 900;
 var width = window.innerWidth;
 //var width = window.innerWidth * window.devicePixelRatio;
 
 // Initialize Phaser, and create a 400px by 490px game
 //var game = new Phaser.Game(400, 490);
-game = new Phaser.Game(width, height, Phaser.CANVAS, 'gameArea');
+game = new Phaser.Game(width, height, Phaser.AUTO, 'flappy-game');
 
 // Add the 'mainState' and call it 'main'
 game.state.add('main', mainState); 

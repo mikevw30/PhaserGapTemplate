@@ -39,9 +39,11 @@ function config($routeProvider, $locationProvider) {
 	})
 	
 	.when('/flappy', {
-		controller : 'FlappyController',
 		templateUrl : 'flappy/flappy.view.html',
-		controllerAs : 'vm'
+	})
+	
+	.when('/tilemap', {
+		templateUrl : 'tilemap/tilemap.view.html',
 	})
 
 	.otherwise({
