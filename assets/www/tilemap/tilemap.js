@@ -47,7 +47,7 @@ function create() {
 
     layer3 = map.createBlankLayer('level3', 40, 30, 32, 32);
 
-    currentLayer = layer3;
+    currentLayer = layer1;
 
     //  Create our tile selector at the top of the screen
     createTileSelector();
@@ -71,6 +71,7 @@ function create() {
     console.log(layer3.index);
 
     game.input.addPointer();
+    game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
 }
 
 function changeLayer(key) {
