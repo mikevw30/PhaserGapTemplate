@@ -206,10 +206,10 @@ function goFullScreen(){
 //	game.scale.pageAlignVertically = true;
 	game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
 //	game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-//	game.scale.minHeight = 480;
-//	game.scale.minWidth = 320;
-//	game.scale.maxHeight = 1152;
-//	game.scale.maxWidth = 768;
+	game.scale.minHeight = 480;
+	game.scale.minWidth = 320;
+	game.scale.maxHeight = 1152;
+	game.scale.maxWidth = 768;
 //	game.scale.refresh();
 }
 

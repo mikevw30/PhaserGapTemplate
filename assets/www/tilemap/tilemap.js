@@ -1,10 +1,8 @@
 // var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render });
-var game = new Phaser.Game(800, 600, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update, render: render });
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update, render: render });
 
 function preload() {
-
     game.load.image('ground_1x1', 'tilemap/assets/ground_1x1.png');
-
 }
 
 var map;
@@ -72,6 +70,10 @@ function create() {
 
     game.input.addPointer();
     game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+	game.scale.minHeight = 480;
+	game.scale.minWidth = 320;
+	game.scale.maxHeight = 1152;
+	game.scale.maxWidth = 768;
 }
 
 function changeLayer(key) {
@@ -109,13 +111,10 @@ function changeLayer(key) {
 }
 
 function pickTile(sprite, pointer) {
-
     currentTile = game.math.snapToFloor(pointer.x, 32) / 32;
-
 }
 
 function updateMarker() {
-
     marker.x = currentLayer.getTileX(game.input.activePointer.worldX) * 32;
     marker.y = currentLayer.getTileY(game.input.activePointer.worldY) * 32;
 
@@ -123,11 +122,9 @@ function updateMarker() {
     {
         map.putTile(currentTile, currentLayer.getTileX(marker.x), currentLayer.getTileY(marker.y), currentLayer);
     }
-
 }
 
 function update() {
-
     if (cursors.left.isDown)
     {
         game.camera.x -= 4;
@@ -145,7 +142,6 @@ function update() {
     {
         game.camera.y += 4;
     }
-
 }
 
 function render() {
