@@ -12,7 +12,7 @@ var mainState = {
         
         // Set the physics system
         game.physics.startSystem(Phaser.Physics.ARCADE);
-
+ //dfd
         var ship = [
                     '.......EEEE...',
                     '......EEEFFE....',
