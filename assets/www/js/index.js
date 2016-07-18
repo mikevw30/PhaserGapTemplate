@@ -2,14 +2,10 @@
 
 angular.module('app', [ 'ngRoute']).config(config);
 
-//angular.element(document).ready(function() {
-//    angular.bootstrap(document, ['app']);
-//  });
-
 config.$inject = [ '$routeProvider', '$locationProvider' ];
 function config($routeProvider, $locationProvider) {
 	$routeProvider.when('/', {
-		templateUrl : 'game/game.view.html',
+		templateUrl : 'game/guess.html',
 		controllerAs : 'vm'
 	})
 	.otherwise({
