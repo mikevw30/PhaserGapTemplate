@@ -18,6 +18,8 @@ theGame.prototype = {
         
         this.bird.anchor.setTo(-0.2, 0.5);
         
+        this.game.debug.body(this.bird);
+        
         this.pipes = this.game.add.group();
         this.stars = this.game.add.group();
         
@@ -111,7 +113,7 @@ theGame.prototype = {
     },
     
     addRowOfPipes: function() {
-    	var numOfHoles = (height/48)-1;
+    	var numOfHoles = (height/48)-2;
     	
 //	        var star = Math.floor(Math.random() * numOfHoles) + 1;
 //	        this.addStar(width, star * 60 + 10);  
