@@ -1,8 +1,8 @@
 // Create our 'main' state that will contain the game
 var mainState = {
     preload: function() { 
-        game.load.image('bird', 'flappy/assets/bird.png'); 
-        game.load.image('pipe', 'flappy/assets/pipe.png');
+        game.load.image('bird', 'game/assets/bird.png'); 
+        game.load.image('pipe', 'game/assets/pipe.png');
     },
 
     create: function() { 
@@ -224,7 +224,7 @@ var width = window.innerWidth;
 
 // Initialize Phaser, and create a 400px by 490px game
 //var game = new Phaser.Game(400, 490);
-game = new Phaser.Game(width, height, Phaser.AUTO, 'flappy-game');
+game = new Phaser.Game(width, height, Phaser.AUTO, 'game');
 
 // Add the 'mainState' and call it 'main'
 game.state.add('main', mainState); 
