@@ -1,10 +1,13 @@
-var gameTitle = function(game){};
+var gameTitle = function(game){
+	height = window.innerHeight;
+	width = window.innerWidth;
+};
 
 gameTitle.prototype = {
   	create: function(){
-		var gameTitle = this.game.add.sprite(160,160,"gametitle");
+		var gameTitle = this.game.add.sprite(width/2,height/2,"gametitle");
 		gameTitle.anchor.setTo(0.5,0.5);
-		var playButton = this.game.add.button(160,320,"play",this.playTheGame,this);
+		var playButton = this.game.add.button(width/2,(height/2)+gameTitle.height,"play",this.playTheGame,this);
 		playButton.anchor.setTo(0.5,0.5);
 	},
 	playTheGame: function(){

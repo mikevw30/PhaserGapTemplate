@@ -12,7 +12,7 @@
     		</style>
 		<script>
 			(function() {
-				var game = new Phaser.Game(320, 480, Phaser.AUTO, "game");
+				var game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.AUTO, "game");
 				game.state.add("Boot",boot);
 				game.state.add("Preload",preload);
 				game.state.add("GameTitle",gameTitle);

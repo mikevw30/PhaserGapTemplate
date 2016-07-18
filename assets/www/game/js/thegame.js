@@ -4,53 +4,133 @@ var theGame = function(game){
 	workingButtons = true;
 	higher = true;
 	score = 0;
+	height = window.innerHeight;
+	width = window.innerWidth;
 };
 
 theGame.prototype = {
-  	create: function(){
-		number = Math.floor(Math.random()*10);
-		spriteNumber = this.game.add.sprite(160,240,"numbers");
-		spriteNumber.anchor.setTo(0.5,0.5);
-		spriteNumber.frame = number;	
-		var higherButton = this.game.add.button(160,100,"higher",this.clickedHigher,this);
-		higherButton.anchor.setTo(0.5,0.5);
-		var lowerButton = this.game.add.button(160,380,"lower",this.clickedLower,this);
-		lowerButton.anchor.setTo(0.5,0.5);	
-	},
-	clickedHigher: function(){
-		higher=true;
-		this.tweenNumber(true);
-	},
-	clickedLower: function(){
-		higher=false;
-		this.tweenNumber(false);
-	},
-	tweenNumber: function(higher){
-		if(workingButtons){
-			workingButtons=false;
-			var exitTween = this.game.add.tween(spriteNumber);
-	          exitTween.to({x:420},500);
-	          exitTween.onComplete.add(this.exitNumber,this);
-	          exitTween.start();
-	     }
-	},
-	exitNumber: function(){
-		spriteNumber.x = -180;
-	     spriteNumber.frame = Math.floor(Math.random()*10);
-	     var enterTween = this.game.add.tween(spriteNumber);
-	     enterTween.to({x:160},500);
-	     enterTween.onComplete.add(this.enterNumber,this);
-	     enterTween.start();
-	
-	},
-	enterNumber: function(){
-		workingButtons=true;
-		if((higher && spriteNumber.frame<number)||(!higher && spriteNumber.frame>number)){
-			this.game.state.start("GameOver",true,false,score);	
-		}
-		else{  
-			score++;
-			number = spriteNumber.frame;
-		}	
-	}
+		create: function() { 
+        // Change the background color of the game to blue
+        this.game.stage.backgroundColor = '#71c5cf';
+        
+        // Display the bird at the position x=100 and y=245
+        this.bird = this.game.add.sprite(100, 245, 'ship');
+        
+        this.bird.anchor.setTo(-0.2, 0.5);
+        
+        this.pipes = this.game.add.group();
+        this.stars = this.game.add.group();
+        
+        // Add physics to the bird
+        // Needed for: movements, gravity, collisions, etc.
+        this.game.physics.arcade.enable(this.bird);
+
+        // Add gravity to the bird to make it fall
+        this.bird.body.gravity.y = 1000;  
+
+        // Call the 'jump' function when the spacekey is hit
+        this.game.input.onDown.add(this.jump, this);
+        
+        this.timer = this.game.time.events.loop(1500, this.addRowOfPipes, this);
+        
+        this.labelScore = this.game.add.text(20, 20, "0",
+                            { font: "30px Arial", fill: "#ffffff" });  
+    },
+
+    update: function() {  
+        // If the bird is out of the screen (too high or too low)
+        // Call the 'restartGame' function
+        if (this.bird.y < 0 || this.bird.y > height){
+            this.endGame();
+        }
+        
+        // collision detection between pipe and bird....
+        this.game.physics.arcade.overlap(this.bird, this.pipes, this.endGame, null, this);
+        this.game.physics.arcade.overlap(this.bird, this.stars, this.collectStar, null, this);
+        
+        if (this.bird.angle < 20){
+            this.bird.angle += 1; 
+        }
+    },
+    
+    // Make the bird jump 
+    jump: function() {
+        // Add a vertical velocity to the bird
+        this.bird.body.velocity.y = -350;
+
+        this.game.add.tween(this.bird).to({angle: -20}, 100).start(); 
+    },
+    
+    // Restart the game
+    endGame: function() {
+        // Start the 'game' state, which restarts the game
+        this.game.state.start('GameOver',true,false,score);
+    },
+
+    collectStar: function(_ship,_star) {
+    	_star.kill();
+        score += 1;
+        this.labelScore.text = score;
+    },
+    
+    addOnePipe: function(x, y) {
+        // Create a pipe at the position x and y
+        var pipe = this.game.add.sprite(x, y, 'alien');
+
+        // Add the pipe to our previously created group
+        this.pipes.add(pipe);
+
+        // Enable physics on the pipe 
+        this.game.physics.arcade.enable(pipe);
+
+        // Add velocity to the pipe to make it move left
+        pipe.body.velocity.x = -200; 
+
+        // Automatically kill the pipe when it's no longer visible 
+        pipe.checkWorldBounds = true;
+        pipe.outOfBoundsKill = true;
+    },
+    addStar: function(x, y) {
+        // Create a pipe at the position x and y
+        var star = this.game.add.sprite(x, y, 'star');
+
+        // Add the pipe to our previously created group
+        this.stars.add(star);
+
+        // Enable physics on the pipe 
+        this.game.physics.arcade.enable(star);
+
+        // Add velocity to the pipe to make it move left
+        star.body.velocity.x = -200; 
+
+        // Automatically kill the pipe when it's no longer visible 
+        star.checkWorldBounds = true;
+        star.outOfBoundsKill = true;
+    },
+    
+    addRowOfPipes: function() {
+    	var numOfHoles = 14;
+    	
+//	        var star = Math.floor(Math.random() * numOfHoles) + 1;
+//	        this.addStar(width, star * 60 + 10);  
+//	        
+//	        for(var i=0; i<3 ;i++){
+//	        	var pipe1 = Math.floor(Math.random() * numOfHoles) + 1;
+//	        	this.addOnePipe(width, pipe1 * 60 + 10);   
+//	        }
+        
+        var arr = [];
+        while(arr.length < 4){
+          var randomnumber=Math.ceil(Math.random()*numOfHoles);
+          var found=false;
+          for(var i=0;i<arr.length;i++){
+        	if(arr[i]==randomnumber){found=true;break;}
+          }
+          if(!found)arr[arr.length]=randomnumber;
+        }
+        this.addStar(width, arr[0] * 60 + 10);  
+        this.addOnePipe(width, arr[1] * 60 + 10);   
+        this.addOnePipe(width, arr[2] * 60 + 10);   
+        this.addOnePipe(width, arr[3] * 60 + 10);   
+    }
 };
