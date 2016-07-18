@@ -33,6 +33,7 @@ theGame.prototype = {
         
         this.timer = this.game.time.events.loop(1500, this.addRowOfPipes, this);
         
+        score = 0;
         this.labelScore = this.game.add.text(20, 20, "0",
                             { font: "30px Arial", fill: "#ffffff" });  
     },
@@ -63,8 +64,9 @@ theGame.prototype = {
     
     // Restart the game
     endGame: function() {
-        // Start the 'game' state, which restarts the game
+    			   //...start(state, clearWorld,clearCache,vars)
         this.game.state.start('GameOver',true,false,score);
+        score = 0;
     },
 
     collectStar: function(_ship,_star) {
@@ -109,7 +111,7 @@ theGame.prototype = {
     },
     
     addRowOfPipes: function() {
-    	var numOfHoles = 14;
+    	var numOfHoles = height/48;
     	
 //	        var star = Math.floor(Math.random() * numOfHoles) + 1;
 //	        this.addStar(width, star * 60 + 10);  
