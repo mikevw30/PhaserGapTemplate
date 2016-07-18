@@ -1,8 +1,8 @@
-var gameOver = function(game){}
+var gameOver = function(game){};
 
 gameOver.prototype = {
 	init: function(score){
-		alert("You scored: "+score)
+		alert("You scored: "+score);
 	},
   	create: function(){
   		var gameOverTitle = this.game.add.sprite(160,160,"gameover");
@@ -13,4 +13,4 @@ gameOver.prototype = {
 	playTheGame: function(){
 		this.game.state.start("TheGame");
 	}
-}
+};

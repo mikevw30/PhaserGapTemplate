@@ -1,4 +1,4 @@
-var gameTitle = function(game){}
+var gameTitle = function(game){};
 
 gameTitle.prototype = {
   	create: function(){
@@ -10,4 +10,4 @@ gameTitle.prototype = {
 	playTheGame: function(){
 		this.game.state.start("TheGame");
 	}
-}
+};

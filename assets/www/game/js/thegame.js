@@ -4,7 +4,7 @@ var theGame = function(game){
 	workingButtons = true;
 	higher = true;
 	score = 0;
-}
+};
 
 theGame.prototype = {
   	create: function(){
@@ -53,4 +53,4 @@ theGame.prototype = {
 			number = spriteNumber.frame;
 		}	
 	}
-}
+};

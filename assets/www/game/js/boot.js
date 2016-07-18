@@ -7,8 +7,8 @@ boot.prototype = {
           this.game.load.image("loading","game/assets/loading.png"); 
 	},
   	create: function(){
-		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
 		this.scale.pageAlignHorizontally = true;
 		this.game.state.start("Preload");
 	}
-}
+};
