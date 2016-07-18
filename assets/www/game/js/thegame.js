@@ -111,7 +111,7 @@ theGame.prototype = {
     },
     
     addRowOfPipes: function() {
-    	var numOfHoles = height/48;
+    	var numOfHoles = (height/48)-1;
     	
 //	        var star = Math.floor(Math.random() * numOfHoles) + 1;
 //	        this.addStar(width, star * 60 + 10);  
