@@ -21,6 +21,7 @@ theGame.prototype = {
         this.game.debug.body(this.bird);
         
         this.pipes = this.game.add.group();
+        
         this.stars = this.game.add.group();
         
         // Add physics to the bird
@@ -81,6 +82,23 @@ theGame.prototype = {
         // Create a pipe at the position x and y
         var pipe = this.game.add.sprite(x, y, 'alien');
 
+        var speed = .3;
+        
+        var t1distance = pipe.y; 
+        var t1time = t1distance/speed;
+        
+        var t2distance = (height-50);
+        var t2time = t2distance/speed;
+
+        var t3distance = (height-50) - y;
+        var t3time = t3distance/speed;
+        
+        tween1 = this.game.add.tween(pipe).to({y:0},t1time,Phaser.Easing.Linear.NONE)
+        								  .to({y:height-50},t2time,Phaser.Easing.Linear.NONE)
+        								  .to({y:y},t3time,Phaser.Easing.Linear.NONE).loop(true);
+        
+        tween1.start();
+        
         // Add the pipe to our previously created group
         this.pipes.add(pipe);
 
@@ -115,14 +133,6 @@ theGame.prototype = {
     addRowOfPipes: function() {
     	var numOfHoles = 10;
     	
-//	        var star = Math.floor(Math.random() * numOfHoles) + 1;
-//	        this.addStar(width, star * 60 + 10);  
-//	        
-//	        for(var i=0; i<3 ;i++){
-//	        	var pipe1 = Math.floor(Math.random() * numOfHoles) + 1;
-//	        	this.addOnePipe(width, pipe1 * 60 + 10);   
-//	        }
-        
         var arr = [];
         while(arr.length < 4){
           var randomnumber=Math.ceil(Math.random()*numOfHoles);
@@ -135,6 +145,6 @@ theGame.prototype = {
         this.addStar(width, arr[0] * 60 + 10);  
         this.addOnePipe(width, arr[1] * 60 + 10);   
         this.addOnePipe(width, arr[2] * 60 + 10);   
-        this.addOnePipe(width, arr[3] * 60 + 10);   
+//        this.addOnePipe(width, arr[3] * 60 + 10);   
     }
 };
