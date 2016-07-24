@@ -1,10 +1,17 @@
-var preload = function(game){};
+var Preload = function(game){
+	 this.ready = false;
+};
 
-preload.prototype = {
+Preload.prototype = {
 	preload: function(){ 
 		var loadingBar = this.add.sprite(160,240,"loading");
 		loadingBar.anchor.setTo(0.5,0.5);
 		this.load.setPreloadSprite(loadingBar);
+		
+		this.load.setPreloadSprite(loadingBar);
+		
+	    this.game.time.events.add(Phaser.Timer.SECOND * 4,this);
+		
 		this.game.load.spritesheet("numbers","game/assets/numbers.png",100,100);
 		this.game.load.image("gametitle","game/assets/gametitle.png");
 		this.game.load.image("play","game/assets/play.png");
@@ -14,7 +21,6 @@ preload.prototype = {
         
         // Set the physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
-
         var ship = [
                     '.......EEEE...',
                     '......EEEFFE....',
@@ -33,9 +39,7 @@ preload.prototype = {
                     '...3333.........',
                     '...333..........'
                   ]; 
-        var pixelWidth = 3;
-        var pixelHeight = 3;
-        this.game.create.texture('ship', ship, pixelWidth, pixelHeight);  
+        this.game.create.texture('ship', ship, 3, 3);  
         
         var alien = [
                      '....DDDDDDDD....',
@@ -54,9 +58,7 @@ preload.prototype = {
                      '.66....66....66.',
                      '.66....66....66.'
                    ];
-                   
         this.game.create.texture('alien', alien, 3, 3);
-        
         
         var star = [
                     '.....828.....',
@@ -72,11 +74,17 @@ preload.prototype = {
                     '.27887.78872.',
                     '.787.....787.'
                   ];
-                  
         this.game.create.texture('star', star, 3, 3);
-		
+        
+        this.onLoadComplete();
 	},
-  	create: function(){
-		this.game.state.start("GameTitle");
-	}
+	update: function(){
+      if(!!this.ready) {
+    	  console.log("preloader state");
+          this.game.state.start('Menu');
+        }
+	},
+    onLoadComplete: function() {
+        this.ready = true;
+    }
 };

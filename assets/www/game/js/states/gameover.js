@@ -16,6 +16,6 @@ gameOver.prototype = {
 		this.game.stage.backgroundColor = '#000000';
 	},
 	playTheGame: function(){
-		this.game.state.start("TheGame");
+		this.game.state.start("Play");
 	}
 };
