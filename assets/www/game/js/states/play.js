@@ -32,10 +32,10 @@ Play.prototype = {
         	this.endGame();
         }    	
         this.aliens.forEach(function(pipeGroup) {
-            this.game.physics.arcade.collide(this.ship, pipeGroup, this.endGame, null, this);
+            this.game.physics.arcade.overlap(this.ship, pipeGroup, this.endGame, null, this);
         }, this);
         this.stars.forEach(function(starGroup) {
-        	this.game.physics.arcade.collide(this.ship, starGroup, this.collectStar, null, this);
+        	this.game.physics.arcade.overlap(this.ship, starGroup, this.collectStar, null, this);
         }, this);
     },
     

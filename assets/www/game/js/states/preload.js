@@ -74,7 +74,7 @@ Preload.prototype = {
                     '.27887.78872.',
                     '.787.....787.'
                   ];
-        this.game.create.texture('star', star, 4, 4);
+        this.game.create.texture('star', star, 3, 3);
         
         this.onLoadComplete();
 	},

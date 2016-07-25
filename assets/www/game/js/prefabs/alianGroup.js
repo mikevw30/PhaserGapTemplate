@@ -7,7 +7,7 @@ var AlienGroup = function(game, parent) {
   var numOfHoles = 10;
 	
   var arr = [];
-  while(arr.length < 3){
+  while(arr.length < 2){
     var randomnumber=Math.ceil(Math.random()*numOfHoles);
     var found=false;
     for(var i=0;i<arr.length;i++){
@@ -17,7 +17,6 @@ var AlienGroup = function(game, parent) {
   }
   this.add(new Alien(game, window.width, arr[0] * 60 + 10));   
   this.add(new Alien(game, window.width, arr[1] * 60 + 10));   
-  this.add(new Alien(game, window.width, arr[2] * 60 + 10)); 
 
   this.setAll('body.velocity.x', -200);
 };
