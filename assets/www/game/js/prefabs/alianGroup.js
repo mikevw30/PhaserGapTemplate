@@ -4,10 +4,10 @@ var AlienGroup = function(game, parent) {
 
   Phaser.Group.call(this, game, parent);
   
-  var numOfHoles = 10;
+  var numOfHoles = window.height/(16*3) -1;
 	
   var arr = [];
-  while(arr.length < 2){
+  while(arr.length < numOfHoles){
     var randomnumber=Math.ceil(Math.random()*numOfHoles);
     var found=false;
     for(var i=0;i<arr.length;i++){
@@ -15,8 +15,10 @@ var AlienGroup = function(game, parent) {
     }
     if(!found)arr[arr.length]=randomnumber;
   }
-  this.add(new Alien(game, window.width, arr[0] * 60 + 10));   
-  this.add(new Alien(game, window.width, arr[1] * 60 + 10));   
+  
+  for(var i = 0;i<3;i++){
+	  this.add(new Alien(game, window.width, arr[i] * (16*3)));   
+  }
 
   this.setAll('body.velocity.x', -200);
 };

@@ -3,6 +3,7 @@
 var Star = function(game, x, y, frame) {
   Phaser.Sprite.call(this, game, x, y, 'star', frame);
   this.game.physics.arcade.enableBody(this);
+  this.anchor.setTo(0.5, 0.5);
   this.name = 'star';
 
   this.body.allowGravity = false;
