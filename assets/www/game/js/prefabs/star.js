@@ -8,7 +8,7 @@ var Star = function(game, x, y, frame) {
   this.body.allowGravity = false;
   this.game.add.existing(this);
   
-  var speed = 2;
+  var speed = .1;
   
   var d1 = y; 
   var t1 = d1/speed;
