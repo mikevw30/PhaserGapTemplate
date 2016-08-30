@@ -10,7 +10,7 @@ gameOver.prototype = {
   	create: function(){
   		starfield = game.add.tileSprite(0, 0, width, height, "stars");
   		
-  		var style = { font: "65px Arial", fill: "#FFF", align: "center" };
+  		var style = { font: "50px Arial", fill: "#e6e6e6", align: "center" };
   		var gameOverText = game.add.text(game.world.centerX, game.world.centerY, "Your Score: "+score+"\nPlay Again", style);
   		gameOverText.inputEnabled = true;
   		gameOverText.events.onInputDown.add(this.playTheGame, this);
