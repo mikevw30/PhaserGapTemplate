@@ -1,12 +1,13 @@
-'use strict';
 var Menu = function(game){	
 	this.height = window.innerHeight;
 	this.width = window.innerWidth;
 	this.ship = null;
+	this.starfield;
 };
 
 Menu.prototype = {
   	create: function(){
+  		starfield = game.add.tileSprite(0, 0, width, height, "stars");
 	    var picHeight = this.game.cache.getImage('gametitle').height;
   		var title = game.add.sprite(this.width/2, this.height/2, 'gametitle');
   		title.anchor.setTo(0.5, 0.5);
@@ -19,6 +20,7 @@ Menu.prototype = {
 	    console.log("menu state");
 	},
 	update: function(){
+		starfield.tilePosition.x -= 1;
 		if(this.ship.body.y > (height/2)+200){
 			this.ship.body.velocity.y = -350;
 			this.game.add.tween(this.ship).to({angle: -20}, 100).start();
