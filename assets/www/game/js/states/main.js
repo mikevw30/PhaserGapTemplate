@@ -7,4 +7,7 @@ game.state.add("Menu",Menu);
 game.state.add("Play",Play);
 game.state.add("GameOver",gameOver);
 
-game.state.start("Boot");
+game.forceSingleUpdate = true;
+
+game.state.start("Preload");
+

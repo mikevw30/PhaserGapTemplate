@@ -11,6 +11,7 @@ var Play = function(game){
 Play.prototype = {
 	create: function() { 
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
+		game.add.tileSprite(0, 0, width, height, "stars");
 
         this.ship = new Ship(this.game, 100, 245);
         
@@ -22,8 +23,6 @@ Play.prototype = {
         score = 0;
         this.labelScore = this.game.add.text(20, 20, "0",{ font: "30px Arial", fill: "#ffffff" }); 
         
-        this.game.stage.backgroundColor = '#71c5cf';
-
         this.timer = this.game.time.events.loop(1500, this.addRow, this);
     },
 

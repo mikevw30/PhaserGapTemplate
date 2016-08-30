@@ -3,21 +3,19 @@ var Preload = function(game){
 };
 
 Preload.prototype = {
+    create: function() {
+    	console.log("Preload state start");
+    	this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+    	this.scale.pageAlignHorizontally = true;
+	},
 	preload: function(){ 
-		var loadingBar = this.add.sprite(160,240,"loading");
-		loadingBar.anchor.setTo(0.5,0.5);
-		this.load.setPreloadSprite(loadingBar);
-		
-		this.load.setPreloadSprite(loadingBar);
-		
 	    this.game.time.events.add(Phaser.Timer.SECOND * 4,this);
 		
 		this.game.load.spritesheet("numbers","game/assets/numbers.png",100,100);
 		this.game.load.image("gametitle","game/assets/gametitle.png");
 		this.game.load.image("play","game/assets/play.png");
-		this.game.load.image("higher","game/assets/higher.png");
-		this.game.load.image("lower","game/assets/lower.png");
 		this.game.load.image("gameover","game/assets/gameover.png");
+		this.game.load.image("stars","game/assets/stars.jpg");
         
         // Set the physics system
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -80,9 +78,14 @@ Preload.prototype = {
 	},
 	update: function(){
       if(!!this.ready) {
-    	  console.log("preloader state");
+    	  console.log("preloader state finished");
           this.game.state.start('Menu');
         }
+	},
+	init: function() {
+		var loadingBar = this.add.sprite(160,240,"loading");
+		loadingBar.anchor.setTo(0.5,0.5);
+		this.load.setPreloadSprite(loadingBar);
 	},
     onLoadComplete: function() {
         this.ready = true;
