@@ -4,8 +4,6 @@ var Play = function(game){
 	workingButtons = true;
 	higher = true;
 	score = 0;
-	height = window.innerHeight;
-	width = window.innerWidth;
 	this.starfield;
 };
 
@@ -43,7 +41,6 @@ Play.prototype = {
     
     endGame: function() {
         this.game.state.start('GameOver',true,false,score);
-        score = 0;
     },
 
     collectStar: function(_ship,_star) {

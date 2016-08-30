@@ -5,16 +5,16 @@ var gameOver = function(game){
 };
 
 gameOver.prototype = {
-	init: function(score){
-		alert("You scored: "+score);
-	},
+//	init: function(score){
+//	},
   	create: function(){
   		starfield = game.add.tileSprite(0, 0, width, height, "stars");
-  		var gameOverTitle = this.game.add.sprite(width/2,height/2,"gameover");
-		gameOverTitle.anchor.setTo(0.5,0.5);
-		var playButton = this.game.add.button(width/2,(height/2)+gameOverTitle.height,"play",this.playTheGame,this);
-		playButton.anchor.setTo(0.5,0.5);
-		this.game.stage.backgroundColor = '#000000';
+  		
+  		var style = { font: "65px Arial", fill: "#FFF", align: "center" };
+  		var gameOverText = game.add.text(game.world.centerX, game.world.centerY, "Your Score: "+score+"\nPlay Again", style);
+  		gameOverText.inputEnabled = true;
+  		gameOverText.events.onInputDown.add(this.playTheGame, this);
+  		gameOverText.anchor.set(0.5);
 	},
 	update: function(){
 		starfield.tilePosition.x -= 1;
