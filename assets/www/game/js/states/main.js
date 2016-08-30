@@ -9,5 +9,5 @@ game.state.add("GameOver",gameOver);
 
 game.forceSingleUpdate = true;
 
-game.state.start("Preload");
+game.state.start("Boot");
 

@@ -13,5 +13,6 @@ Boot.prototype = {
   init: function(){
   },
   preload: function() {
+      this.game.load.image("loading","game/assets/loading.png");
   }
 };

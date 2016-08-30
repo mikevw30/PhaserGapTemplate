@@ -9,8 +9,23 @@ Preload.prototype = {
     	this.scale.pageAlignHorizontally = true;
 	},
 	preload: function(){ 
-	    this.game.time.events.add(Phaser.Timer.SECOND * 4,this);
-		
+		var loadingBar = this.add.sprite(160,240,"loading");
+		loadingBar.anchor.setTo(0.5,0.5);
+		this.load.setPreloadSprite(loadingBar,0);
+
+	    this.loadData();
+        this.onLoadComplete();
+	},
+	update: function(){
+      if(!!this.ready) {
+    	  console.log("preloader state finished");
+          this.game.state.start('Menu');
+        }
+	},
+    onLoadComplete: function() {
+        this.ready = true;
+    },
+    loadData: function(){
 		this.game.load.spritesheet("numbers","game/assets/numbers.png",100,100);
 		this.game.load.image("gametitle","game/assets/gametitle.png");
 		this.game.load.image("play","game/assets/play.png");
@@ -73,21 +88,5 @@ Preload.prototype = {
                     '.787.....787.'
                   ];
         this.game.create.texture('star', star, 3, 3);
-        
-        this.onLoadComplete();
-	},
-	update: function(){
-      if(!!this.ready) {
-    	  console.log("preloader state finished");
-          this.game.state.start('Menu');
-        }
-	},
-	init: function() {
-		var loadingBar = this.add.sprite(160,240,"loading");
-		loadingBar.anchor.setTo(0.5,0.5);
-		this.load.setPreloadSprite(loadingBar);
-	},
-    onLoadComplete: function() {
-        this.ready = true;
     }
 };
