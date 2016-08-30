@@ -3,18 +3,23 @@ var Preload = function(game){
 };
 
 Preload.prototype = {
+	init: function(){
+		this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+		this.scale.pageAlignHorizontally = true;
+		this.game.forceSingleUpdate = true;
+	},
+	preload: function(){ 
+		var loadingBar = this.add.sprite(game.world.centerX,game.world.centerY,"loading");
+		loadingBar.anchor.setTo(0.5);
+		this.load.setPreloadSprite(loadingBar,0);
+		
+		this.loadData();
+		this.onLoadComplete();
+	},
     create: function() {
     	console.log("Preload state start");
     	this.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
     	this.scale.pageAlignHorizontally = true;
-	},
-	preload: function(){ 
-		var loadingBar = this.add.sprite(160,240,"loading");
-		loadingBar.anchor.setTo(0.5,0.5);
-		this.load.setPreloadSprite(loadingBar,0);
-
-	    this.loadData();
-        this.onLoadComplete();
 	},
 	update: function(){
       if(!!this.ready) {
