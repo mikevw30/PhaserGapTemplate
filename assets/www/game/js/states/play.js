@@ -6,12 +6,13 @@ var Play = function(game){
 	score = 0;
 	height = window.innerHeight;
 	width = window.innerWidth;
+	this.starfield;
 };
 
 Play.prototype = {
 	create: function() { 
 		this.game.physics.startSystem(Phaser.Physics.ARCADE);
-		game.add.tileSprite(0, 0, width, height, "stars");
+		starfield = game.add.tileSprite(0, 0, width, height, "stars");
 
         this.ship = new Ship(this.game, 100, 245);
         
@@ -26,7 +27,9 @@ Play.prototype = {
         this.timer = this.game.time.events.loop(1500, this.addRow, this);
     },
 
-    update: function() {  
+    update: function() {
+    	starfield.tilePosition.x -= 1;
+    	
         if (this.ship.y < 0 || this.ship.y > height){
         	this.endGame();
         }    	
